@@ -1,0 +1,56 @@
+1.选择一个合适的地方，创建一个空目录：git mkdir learngit
+
+1.2.用于显示当前的目录：pwd；
+
+2.把这个目录变成git可以管理的仓库：git init；
+
+3.把文件添加到仓库：git add；
+
+4.把文件提交到仓库：git commit -m '说明'；
+
+5.查看仓库当前的状态:git status；
+
+6.查看文件具体修改了什么内容：git diff '文件名'；
+
+7.查看版本提交的历史记录（近到远排序）：git log；
+
+7.2.查看你用的每次命令记录：git reflog；
+
+8.回退到之前某个版本：git reset --hard HEAD^ || git reset --hard 'commit ID'；
+
+9.查看工作区和版本库里面最新版本的区别：git diff HEAD -- '文件名'；
+
+10.撤销工作区的修改：git checkout -- '文件名'；（ps:'--'很重要，没有这个就变成切换到另一个分支的命令）
+
+11.删除文件：git rm '文件名'；
+
+二、创建远程仓库
+
+①用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：$ ssh-keygen -t rsa -C "youremail@example.com"；
+
+②第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容；
+
+三、添加远程库
+
+①登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库：
+
+②在本地的仓库下运行命令关联一个远程库：
+git remote add origin git@github.com:ziyueliu/learngit.git；
+
+③把本地库的所有内容首次推送到远程库上：git push -u origin master，此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；如果推送失败，先用git pull抓取远程的新提交；
+
+四、从远程库克隆
+
+克隆一个本地库：git clone git@github.com:ziyueliu/learngit.git；
+
+五、分支管理
+
+①创建分支：git checkout -b <name>；
+②查看分支：git branch；
+③合并指定分支到当前分支：git merge <name>；
+④删除分支：git branch -d <name>；
+⑤切换分支：git checkout <name>；
+⑥当前工作现场“储藏”起来：git stash；回到工作现场：git stash pop；
+⑦查看远程库信息“git remote -v；
+⑧创建远程origin的dev分支到本地：git checkout -b dev origin/dev；
+
